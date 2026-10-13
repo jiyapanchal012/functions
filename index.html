@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Functions & Scope</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: #f4f6fb;
+        color: #1d2939;
+        font-family: Arial, sans-serif;
+      }
+      header {
+        background: #182b50;
+        color: #fff;
+        padding: 28px 18px;
+        text-align: center;
+      }
+      header h1 {
+        margin: 0 0 8px;
+      }
+      header p {
+        margin: 0;
+        color: #d9e3f5;
+      }
+      .container {
+        max-width: 1000px;
+        margin: 24px auto;
+        padding: 0 16px;
+      }
+      .intro {
+        background: #fff;
+        padding: 16px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #e5e7eb;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 16px;
+      }
+      .card {
+        background: white;
+        padding: 18px;
+        border: 1px solid #e1e6ed;
+        border-radius: 12px;
+        box-shadow: 0 2px 7px #14294e0b;
+      }
+      .card h2 {
+        margin: 0 0 6px;
+        font-size: 19px;
+      }
+      .card p {
+        font-size: 13px;
+        color: #526071;
+        margin: 0 0 12px;
+        line-height: 1.4;
+      }
+      .editor {
+        width: 100%;
+        height: 148px;
+        resize: vertical;
+        border: 1px solid #cdd5df;
+        border-radius: 7px;
+        background: #fbfcff;
+        padding: 12px;
+        font:
+          13px/1.5 Consolas,
+          monospace;
+        color: #182b50;
+      }
+      button {
+        background: #265ed7;
+        color: white;
+        border: 0;
+        padding: 10px 22px;
+        border-radius: 7px;
+        cursor: pointer;
+        margin: 10px 0;
+        font-weight: bold;
+      }
+      button:hover {
+        background: #1747b2;
+      }
+      .output {
+        background: #111e32;
+        color: #ddf9dc;
+        padding: 12px;
+        min-height: 55px;
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+        border-radius: 7px;
+        font:
+          13px/1.6 Consolas,
+          monospace;
+      }
+      .output-label {
+        font-size: 12px;
+        font-weight: bold;
+        margin-bottom: 6px;
+        color: #56647a;
+      }
+      .note {
+        text-align: center;
+        color: #667085;
+        font-size: 13px;
+        padding: 24px;
+      }
+      @media (max-width: 600px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        header h1 {
+          font-size: 23px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>JavaScript Functions & Scope</h1>
+      <p>Editable Code • Run Button • Live Output</p>
+    </header>
+    <main class="container">
+      <div class="intro">
+        <strong>Task:</strong> Build 5 utility functions:
+        <strong
+          >calculateTax, isPrime, celsiusToFahrenheit, reverseStr,
+          capitalize</strong
+        >
+        using arrow syntax. Also practice function declarations, expressions,
+        parameters, default arguments, return, and global/function/block
+        scope.<br /><small
+          >Edit the JavaScript code in any box and press Run. Use
+          <code>console.log()</code> to display output.</small
+        >
+      </div>
+      <div class="grid">
+        <section class="card">
+          <h2>1. calculateTax()</h2>
+          <p>Arrow function: calculate tax from amount and percentage.</p>
+          <textarea class="editor">
+const calculateTax = (amount, rate = 18) => {
+  return amount * rate / 100;
+};
+console.log("Tax:", calculateTax(1000));
+console.log("Tax at 5%:", calculateTax(500, 5));</textarea
+          ><button onclick="runCode(this)">▶ Run</button>
+          <div class="output-label">Output</div>
+          <div class="output">Click Run to see output.</div>
+        </section>
+        <section class="card">
+          <h2>2. isPrime()</h2>
+          <p>Arrow function: check whether a number is prime.</p>
+          <textarea class="editor">
+const isPrime = (number) => {
+  if (number < 2) return false;
+  for (let i = 2; i < number; i++) {
+    if (number % i === 0) return false;
+  }
+  return true;
+};
+console.log("7:", isPrime(7));
+console.log("10:", isPrime(10));</textarea
+          ><button onclick="runCode(this)">▶ Run</button>
+          <div class="output-label">Output</div>
+          <div class="output">Click Run to see output.</div>
+        </section>
+        <section class="card">
+          <h2>3. celsiusToFahrenheit()</h2>
+          <p>Arrow function: convert Celsius to Fahrenheit.</p>
+          <textarea class="editor">
+const celsiusToFahrenheit = (celsius) => {
+  return (celsius * 9 / 5) + 32;
+};
+console.log("0°C =", celsiusToFahrenheit(0), "°F");
+console.log("30°C =", celsiusToFahrenheit(30), "°F");</textarea
+          ><button onclick="runCode(this)">▶ Run</button>
+          <div class="output-label">Output</div>
+          <div class="output">Click Run to see output.</div>
+        </section>
+        <section class="card">
+          <h2>4. reverseStr()</h2>
+          <p>Arrow function: reverse the letters in a string.</p>
+          <textarea class="editor">
+const reverseStr = (text) => {
+  return text.split("").reverse().join("");
+};
+console.log(reverseStr("hello"));
+console.log(reverseStr("JavaScript"));</textarea
+          ><button onclick="runCode(this)">▶ Run</button>
+          <div class="output-label">Output</div>
+          <div class="output">Click Run to see output.</div>
+        </section>
+        <section class="card">
+          <h2>5. capitalize()</h2>
+          <p>Arrow function: capitalize the first letter of each word.</p>
+          <textarea class="editor">
+const capitalize = (text) => {
+  let words = text.split(" ");
+  for (let i = 0; i < words.length; i++) {
+    if (words[i] !== "") {
+      words[i] = words[i][0].toUpperCase() + words[i].slice(1);
+    }
+  }
+  return words.join(" ");
+};
+console.log(capitalize("hello world"));</textarea
+          ><button onclick="runCode(this)">▶ Run</button>
+          <div class="output-label">Output</div>
+          <div class="output">Click Run to see output.</div>
+        </section>
+        <section class="card">
+          <h2>6. Declaration vs Expression</h2>
+          <p>Two simple ways to write a function.</p>
+          <textarea class="editor">
+function add(a, b) {
+  return a + b;
+}
+const multiply = function(a, b) {
+  return a * b;
+};
+console.log("Add:", add(5, 3));
+console.log("Multiply:", multiply(5, 3));</textarea
+          ><button onclick="runCode(this)">▶ Run</button>
+          <div class="output-label">Output</div>
+          <div class="output">Click Run to see output.</div>
+        </section>
+        <section class="card">
+          <h2>7. Parameters, Default & Return</h2>
+          <p>See parameters, default arguments and return values.</p>
+          <textarea class="editor">
+function greet(name = "Student") {
+  return "Hello " + name;
+}
+console.log(greet("Rahul"));
+console.log(greet());</textarea
+          ><button onclick="runCode(this)">▶ Run</button>
+          <div class="output-label">Output</div>
+          <div class="output">Click Run to see output.</div>
+        </section>
+        <section class="card">
+          <h2>8. Global, Function & Block Scope</h2>
+          <p>See where each variable can be accessed.</p>
+          <textarea class="editor">
+let globalName = "Global";
+function showScope() {
+  let functionName = "Function";
+  console.log(globalName);
+  console.log(functionName);
+  if (true) {
+    let blockName = "Block";
+    console.log(blockName);
+  }
+  // blockName is not available here
+}
+showScope();</textarea
+          ><button onclick="runCode(this)">▶ Run</button>
+          <div class="output-label">Output</div>
+          <div class="output">Click Run to see output.</div>
+        </section>
+      </div>
+      <p class="note">
+        JavaScript Basics Practical • HTML, CSS & JavaScript • Works offline
+      </p>
+    </main>
+    <script>
+      function runCode(button) {
+        const card = button.parentElement;
+        const code = card.querySelector("textarea").value;
+        const result = card.querySelector(".output");
+        let lines = [];
+        const outputConsole = {
+          log: function (...values) {
+            lines.push(
+              values
+                .map(function (value) {
+                  if (typeof value === "object" && value !== null)
+                    return JSON.stringify(value);
+                  return String(value);
+                })
+                .join(" "),
+            );
+          },
+        };
+        try {
+          // Run only the code entered in this box, with a local console for output.
+          const execute = new Function("console", code);
+          execute(outputConsole);
+          result.textContent = lines.length
+            ? lines.join("\n")
+            : "Code ran successfully (no console.log output).";
+        } catch (error) {
+          result.textContent = "Error: " + error.message;
+        }
+      }
+    </script>
+  </body>
+</html>
